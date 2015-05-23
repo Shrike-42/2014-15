@@ -8,7 +8,6 @@
 #include <EthernetUdp.h>
 #include <SoftwareSerial.h>
 #include <Wire.h>
-#include <LSM303.h>
 
 void setup()
 {
@@ -17,8 +16,6 @@ void setup()
     attachHandMotors();
     initializeWireless();
     initializeGPS();
-    initializeCompass();
-    Wire.begin();
 }
 
 void loop()
@@ -31,6 +28,5 @@ void loop()
     writeToArmMotors();
     writeToHandMotors();
     updateGPS();
-    updateCompass();
 }
 
