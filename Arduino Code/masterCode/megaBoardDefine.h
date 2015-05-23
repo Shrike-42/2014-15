@@ -1,11 +1,11 @@
 // May 22, 2015. Husky Robotics, made by Electrical Team
 #include "Arduino.h"
-//#include <Adafruit_GPS.h>  // include this file in the Arduino libraries folder
+#include <Adafruit_GPS.h>  // include this file in the Arduino libraries folder
 #include <Servo.h>
 #include <SPI.h>
 #include <Ethernet.h>
 #include <EthernetUdp.h>
-//#include <SoftwareSerial.h>
+#include <SoftwareSerial.h>
 #include <Wire.h>
 
 
@@ -47,6 +47,9 @@ const int TALON_ARM[3] = {6, 7, 8};   // pins for motor control
 #define NEUTRAL_FREQUENCY      1500
 #define SPEEDUP_FREQUENCY      1750   // For arm
 #define SPEEDDOWN_FREWQUENCY   1250   // For arm
+// MIN AND MAX HAND SERVO VALUES
+#define MIN_HAND  50
+#define MAX_HAND  104
 
 
 // SENSOR PINS
@@ -60,9 +63,10 @@ const int TALON_ARM[3] = {6, 7, 8};   // pins for motor control
 #define MIN_FREQUENCY       1250
 #define MAX_FREQUENCY       1750
 
-// MIN AND MAX HAND SERVO VALUES
-#define MIN_HAND  50
-#define MAX_HAND  104
+
 
 
 // GPS CONSTANTS AND VARIABLES
+HardwareSerial GPS_Port = Serial1;
+Adafruit_GPS GPS(&GPS_Port);
+
