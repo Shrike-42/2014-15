@@ -6,6 +6,7 @@ void initializeGPS()
 
 void updateGPS()
 {
+    
     Udp.beginPacket(Udp.remoteIP(), Udp.remotePort());
     Udp.write("N" + GPS.lat);
     Udp.write("W" + GPS.lon);

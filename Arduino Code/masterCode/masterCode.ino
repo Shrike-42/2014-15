@@ -10,6 +10,7 @@
 #include <Wire.h>
 #include <LSM303.h>
 
+
 void setup()
 {
     attachDriveMotors();
@@ -18,8 +19,10 @@ void setup()
     initializeWireless();
     initializeGPS();
     initializeCompass();
-    Wire.begin();
+    initializeCompressor();
+    pinMode(ALARM_PIN, OUTPUT)
 }
+
 
 void loop()
 {

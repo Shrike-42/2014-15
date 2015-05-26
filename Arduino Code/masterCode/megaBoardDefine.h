@@ -7,7 +7,7 @@
 #include <EthernetUdp.h>
 #include <SoftwareSerial.h>
 #include <Wire.h>
-
+#include <LSM303.h>
 
 // WIRELESS COMMUNICATION
 // Port to listen for UDP connections on 
@@ -55,18 +55,20 @@ const int TALON_ARM[3] = {6, 7, 8};   // pins for motor control
 // SENSOR PINS
 #define CURRENT_SENSOR_PIN  A1  // connected to analog 1     for monitoring current on the big ass battery
 #define COMPRESSOR_PIN      A0  // connected to analog 0     for reading pressure
-#define COMPRESSOR_CONTROL  23  // connected to digital 23   for increasing pressure on pneumatic suspension
+#define COMPRESSOR_CONTROL  19  // connected to digital 2   for increasing pressure on pneumatic suspension
 
 
 // CONTROL AND LOGIC CONSTANTS
 #define TIMEOUT  1000  // in milliseconds. This is to test to see if there is still wireless connection
 #define MIN_FREQUENCY       1250
 #define MAX_FREQUENCY       1750
+#define ALARM_PIN           40   // connected to digital 40
+#define DANGER_CURRENT      85  // Amps
 
 
-
-
-// GPS CONSTANTS AND VARIABLES
+// GPS AND COMPASS CONSTANTS AND VARIABLES
+char[] GPSbuff;
 HardwareSerial GPS_Port = Serial1;
 Adafruit_GPS GPS(&GPS_Port);
+LSM303 compass;
 
