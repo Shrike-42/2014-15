@@ -3,6 +3,7 @@
 void setup() {
   // initialize serial communications:
   Serial.begin(BAUD_RATE);
+  pinMode(pHPin, INPUT);
   initializeCameraServo();
 }
 
