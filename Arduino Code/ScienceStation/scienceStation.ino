@@ -1,15 +1,15 @@
 #include "sciencestationDefine.h"
-//#include <Wire.h>
 
 void setup() {
   // initialize serial communications:
-  // Wire.begin();
   Serial.begin(BAUD_RATE);
+  initializeCameraServo();
 }
 
 void loop() {
-  // sendReadings(humidityReading(), phReading());
-  int phValue = phReading();
+  controlCameraDirection();
+  int pHValue = phReading();
+  Serial.println(pHValue);
   delay(TimeBetweenReadings);// delay in between reads for stability
 }
 

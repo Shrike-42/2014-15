@@ -1,12 +1,6 @@
 #include <Servo.h>
 
-const int TOCAMERAPINS[4] = {3,5,6,9};
-const int CTRLHIGHPINS[4] = {2,4,7,8};
-const int CTRLLOWPINS[4] = {10,11,12,13};
-
-Servo cameras[4];
-
-void setup()
+void initializeCameraServo()
 {
   for (int i = 0; i <= 3; i++)
   {
@@ -20,12 +14,14 @@ void setup()
 boolean controlHigh[4];
 boolean controlLow[4];
 
-void loop()
+void controlCameraDirection()
 {
   for (int i = 0; i <= 3; i++)
   {
     controlHigh[i] = digitalRead(CTRLHIGHPINS[i]);
+    delay(TimeBetweenReadings);
     controlLow[i] = digitalRead(CTRLLOWPINS[i]);
+    delay(TimeBetweenReadings);
   }
   for (int i = 0; i <= 3; i++)
   {
@@ -41,5 +37,6 @@ void loop()
     {
       cameras[i].write(0); // Stay put
     }
+    delay(TimeBetweenReadings);
   }
 } 

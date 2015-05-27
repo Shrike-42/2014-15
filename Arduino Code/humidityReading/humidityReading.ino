@@ -1,3 +1,6 @@
+// const int humPin = A0;
+boolean humcalibrated = true;
+double humcalibratedValue = 640.0;
 int humidityReading()
 {
   // read the value from the pin
